@@ -1,15 +1,8 @@
-import glob
 import random
 import string
 from collections import Counter
 from datetime import datetime, date, timedelta
 import csv
-from re import search
-
-import pandas
-
-import openpyxl
-from selenium.common import TimeoutException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
