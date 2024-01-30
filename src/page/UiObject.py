@@ -26,24 +26,6 @@ def current_time():
     return "Started run date {} at time {}".format(today, current)
 
 
-def round_well(obtained_value, calculated_value, looseness_value=0.001000):
-    if obtained_value == calculated_value:
-        return obtained_value
-    elif (obtained_value + looseness_value or obtained_value - looseness_value) == calculated_value:
-        return calculated_value
-    else:
-        return obtained_value
-
-
-def round_well_with_rank(obtained_value, calculated_value, looseness_value=0.001000):
-    if obtained_value == calculated_value:
-        return obtained_value
-    elif abs(obtained_value - calculated_value) <= looseness_value:
-        return calculated_value
-    else:
-        return obtained_value
-
-
 def passed_argument():
     pass  # pass is pass
 
@@ -167,11 +149,6 @@ class UiObject:
         raise AssertionError("Locator did not appear: {} in {} seconds!"
                              .format(self.locator, wait))
 
-    def wait_to_appear_long_time(self, wait=120):
-        if self.exists(wait):
-            return self
-        raise AssertionError("Locator did not appear: {} in {} seconds!".format(self.locator, wait))
-
     def wait_to_disappear(self, wait=500):
         if not self.visible(wait):
             return self
@@ -200,15 +177,6 @@ class UiObject:
             counter = counter + 1
             time.sleep(0.2)
         return text.encode(encoding) if encoding else text
-
-    @staticmethod
-    def validate_load_pro(element, wait):
-        try:
-            wait_element = WebDriverWait(Browser.get_driver(), wait)
-            wait_element.until(EC.presence_of_element_located(element))
-            wait_element.until(EC.invisibility_of_element_located(element))
-        except TimeoutException:
-            pass
 
     def set_text(self, value, wait=20):
         self.get_element(wait).clear()
@@ -349,17 +317,6 @@ class UiObject:
         return list_need
 
     @staticmethod
-    def go_to_business(element, more_options_element, js_query):
-        focus = UiObject.wait_to_appear(element, wait=15)
-        if focus.visible(wait=15):
-            UiObject.clickable(focus)
-            focus.clicking()
-        else:
-            UiObject.wait_to_be_clickable(more_options_element).clicking()
-            time.sleep(1)
-            UiObject.js_element(js_query)
-
-    @staticmethod
     def numbers():
         import datetime
         import time
@@ -391,12 +348,6 @@ class UiObject:
     @staticmethod
     def read_structure(data):
         return data.columns
-
-    @staticmethod
-    def read_xlsx(name_file="reporte_de_liquidaciones_nuevo_0.xlsx"):
-        xlsx = openpyxl.load_workbook(f'download/{name_file}')
-        sheet = xlsx.active
-        return sheet
 
     @staticmethod
     def select_item(value, values):

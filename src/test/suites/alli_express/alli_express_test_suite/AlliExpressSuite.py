@@ -2,6 +2,7 @@ import unittest
 
 from test_junkie.decorators import Suite, beforeTest, afterTest, test
 
+from src.page.alli_express_view.SearchProductView import SearchProductView
 from src.page.get_started.GetStartedPage import GetStartedPage
 from src.test.suites.transversal import Transversal
 from src.page.utils.LogCustom import logger
@@ -25,4 +26,6 @@ class AlliExpressSuite(unittest.TestSuite):
           parallelized_parameters=True, retry=2)
     def validated_if_the_second_element_of_the_second_view_is_greater_that_one(self, suite_parameter, parameter):
         logger.info("@TEST - validated_if_the_second_element_of_the_second_view_is_greater_that_one")
-        print("hola mundo")
+        SearchProductView.search_bar_input("instax mini")
+        SearchProductView.click_on_search_button()
+        SearchProductView.scroll_to_paginator()
