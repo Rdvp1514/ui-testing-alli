@@ -1,12 +1,5 @@
-import os
-import random
-from datetime import datetime
-
-
 class Transversal:
-    CO_COUNTRY = "CO"
     CL_COUNTRY = "CL"
-    CD_COUNTRY = "CD"
 
 
 class TestCategory:
@@ -69,9 +62,6 @@ class Event:
 
 class Links:
     DOMAIN_CL = "https://es.aliexpress.com/"
-    DOMAIN_CO = "https://es.aliexpress.com/"
-    DOMAIN_BR = "https://es.aliexpress.com/"
-    DOMAIN_CD = "https://es.aliexpress.com/"
 
 
 class Color:
