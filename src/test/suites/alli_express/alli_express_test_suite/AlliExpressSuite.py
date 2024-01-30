@@ -29,3 +29,5 @@ class AlliExpressSuite(unittest.TestSuite):
         SearchProductView.search_bar_input("instax mini")
         SearchProductView.click_on_search_button()
         SearchProductView.scroll_to_paginator()
+        SearchProductView.click_on_second_page()
+        SearchProductView.click_on_order_list_button()
