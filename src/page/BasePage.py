@@ -91,7 +91,7 @@ class BasePage:
         This method will open the page which inherited BasePage
         :return: self (page Object which inherited BasePage will be returned)
         """
-        time.sleep(0.5)
+
         Browser.get_driver().get(expected_url)
 
         return self
