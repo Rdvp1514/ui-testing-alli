@@ -1,11 +1,7 @@
 import inspect
-import os
 import sys
-
-from selenium.common import WebDriverException
-
+from selenium.common import WebDriverException, TimeoutException
 from src.page.UiObject import *
-
 from src.page.utils.Constants import Transversal
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
@@ -83,7 +79,7 @@ class BasePage:
                         (By.XPATH, "//div[contains(text(),'Permitir')]"))
                 )
                 notification.click()
-            except TimeoutException as ex:
+            except TimeoutException:
                 pass
 
     def open_billing(self, expected_url, **kwargs):
