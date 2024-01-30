@@ -19,6 +19,12 @@ from src.page.Browser import *
 from src.page.utils.LogCustom import logger
 
 
+def delete_old_screenshot():
+    logger.info("@DELETING - DELETING SCREENSHOT")
+    UiObject.remove_all_file("screenshot")
+    return True
+
+
 def current_time():
     now = datetime.now()
     current = now.strftime("%H:%M:%S")

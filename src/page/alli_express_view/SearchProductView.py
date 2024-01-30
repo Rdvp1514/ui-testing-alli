@@ -12,6 +12,7 @@ class SearchProductView:
     JS_SECOND_PAGE_ = 'document.getElementsByClassName("comet-pagination-item comet-pagination-item-2")[0].click();'
     ORDER_BY_LIST_BUTTON_ = UiObject(By.XPATH, "//div[@id='root']//span[contains(text(), 'List')]")
     LIST_VIEW_ELEMENT = UiObject(By.XPATH, "//div[@id='card-list']//div[contains(@class, 'list--list--')]")
+    TOTAL_ELEMENT_TO_SELL = UiObject(By.XPATH, "//span[contains(text(),'unidades disponibles')]")
 
     @staticmethod
     def search_bar_input(value):
@@ -42,3 +43,12 @@ class SearchProductView:
     @staticmethod
     def new_windows():
         UiObject.switch_window()
+
+    @staticmethod
+    def get_total_product_to_see():
+        import re  # re library help to find the number inside the strings
+
+        str_total_product_to_see = UiObject.wait_to_appear(SearchProductView.TOTAL_ELEMENT_TO_SELL).get_text()
+        number = re.findall(r'\d+', str_total_product_to_see)
+        number = "".join(number)
+        return number
