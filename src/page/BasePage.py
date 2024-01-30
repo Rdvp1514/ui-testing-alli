@@ -62,7 +62,7 @@ class BasePage:
             driver.implicitly_wait(2)
             return driver.current_url
 
-    def open(self, country="CO", **kwargs):
+    def open(self, country="CL", **kwargs):
         """
         This method will open the page which inherited BasePage
         :return: self (page Object which inherited BasePage will be returned)
