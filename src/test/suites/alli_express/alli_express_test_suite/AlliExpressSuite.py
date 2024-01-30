@@ -1,3 +1,4 @@
+import time
 import unittest
 
 from test_junkie.decorators import Suite, beforeTest, afterTest, test
@@ -31,3 +32,5 @@ class AlliExpressSuite(unittest.TestSuite):
         SearchProductView.scroll_to_paginator()
         SearchProductView.click_on_second_page()
         SearchProductView.click_on_order_list_button()
+        SearchProductView.get_second_element()
+        SearchProductView.new_windows()

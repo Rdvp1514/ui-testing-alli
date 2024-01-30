@@ -11,6 +11,7 @@ class SearchProductView:
     SCROLL_BAR_ = UiObject(By.XPATH, "//button[contains(text(),'confirm')]")
     JS_SECOND_PAGE_ = 'document.getElementsByClassName("comet-pagination-item comet-pagination-item-2")[0].click();'
     ORDER_BY_LIST_BUTTON_ = UiObject(By.XPATH, "//div[@id='root']//span[contains(text(), 'List')]")
+    LIST_VIEW_ELEMENT = UiObject(By.XPATH, "//div[@id='card-list']//div[contains(@class, 'list--list--')]")
 
     @staticmethod
     def search_bar_input(value):
@@ -31,3 +32,13 @@ class SearchProductView:
     @staticmethod
     def click_on_second_page():
         UiObject.js_element(SearchProductView.JS_SECOND_PAGE_)
+
+    @staticmethod
+    def get_second_element():
+        elements = UiObject.get_elements(SearchProductView.LIST_VIEW_ELEMENT)
+        for element in elements[1:2]:
+            element.click()
+
+    @staticmethod
+    def new_windows():
+        UiObject.switch_window()
