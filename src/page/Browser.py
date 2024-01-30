@@ -38,7 +38,7 @@ class Browser:
         options.add_argument("--enable-automation")
         options.add_argument("--disable-browser-side-navigation")
         options.add_argument("--disable-gpu")
-        options.add_argument("--headless=new")
+        # options.add_argument("--headless=new")
         options.add_argument('--lang=es')
         options.add_argument("--log-level=DEBUG")
         options.add_argument("--disable-blink-features=AutomationControlled")
