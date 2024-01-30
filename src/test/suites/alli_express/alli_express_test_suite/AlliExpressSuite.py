@@ -1,4 +1,3 @@
-import time
 import unittest
 
 from test_junkie.decorators import Suite, beforeTest, afterTest, test
@@ -12,7 +11,7 @@ from src.page.utils.LogCustom import logger
 @Suite(feature="As a Customer, we want to see if the second item from the second results page when searching for "
                "'instax mini' on www.aliexpress.com has at least 1 item to be bought.", owner="Ricardo Valbuena",
        parameters=[GetStartedPage])
-class AlliExpressSuite(unittest.TestSuite):
+class AlliExpressSuite(unittest.TestCase):
     logger.info("@CLASS - AlliExpressSuite")
 
     @beforeTest()
@@ -33,4 +32,6 @@ class AlliExpressSuite(unittest.TestSuite):
         SearchProductView.click_on_second_page()
         SearchProductView.click_on_order_list_button()
         SearchProductView.get_second_element()
-        SearchProductView.new_windows()
+        SearchProductView.new_windows()  # This change the focus on the new window Tab
+        product_total = SearchProductView.get_total_product_to_see()
+        self.assertGreater(int(product_total), 0)
